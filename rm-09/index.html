@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入门9 html学习</title>
+</head>
+<body>
+    <h1 style="text-align: center;">入门9 html学习</h1>
+    <hr>
+    <h2>1 form 常见属性</h2>
+    <h3>action: 表单请求的url <br>method：表单请求的动作 POST/GET <br>target:表单提交后返回的信息在哪里展示_blank,_self,_parent,_top</h3>
+    <a href="a_get.html" target='_blank'>a标签发起GET请求</a>
+    <br>
+    <p>POST表单提交</p>
+    <form action="form.html" method="post">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit">提交</button>
+    </form>
+    <p>form 会将表单中的 所有 带name的属性  用 method规定的方法 发送到 action指定的路径上</p>
+    <a href="form.html" target="_blank">form表单提交发POST请求</a>
+    <p>Content-Type:x-www-form-urlencoded 会将不是键盘上的信息转换为相应的utf-8 每个字节前面加个%百分号</p>
+    <a href="form1.html">例如 在form表单中提交中文 你好 试一下</a>
+    <p>GET表单提交</p>
+        <form action="form3.html" method="get">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit">提交</button>
+    </form>
+
+    <hr>
+    <h2>2 input/button</h2>
+    <em>****input/button 的区别</em>
+    <p>button是 有子元素的 而input是没有子元素的</p>
+    <h3>2.1如果一个form里面没有submit按钮 且存在一个button 没有type属性 则自动升级为 submit按钮</h3>
+    <form action="form.html" method="post">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>提交</button>
+    </form>
+    <h3>2.2checkbox复选框</h3>
+    <p>label 标签的 for属性 和 input框的 id属性 配合 可以产生化学反应  自己试试</p>
+    <p>点爱我 就相当于点 复选框</p>
+    <strong>老司机 都是用 label把input包起来 这样就不用给input加id 也不用给label加for</strong>
+    <form action="form.html" method="post">
+        <input type="checkbox" id='xxx'><label for="xxx">爱我</label>
+        <label><input type="checkbox">不爱我</label>
+        <button>提交</button>
+    </form>
+    <form action="fruits" method="get">
+        <span>喜欢的水果</span>
+        <label><input type="checkbox" name="fruit" value="banana">香蕉</label>
+        <label><input type="checkbox" name="fruit" value="apple">苹果</label>
+        <label><input type="checkbox" name="fruit" value="orange">橘子</label>
+        <button>提交</button>
+    </form>
+    <h3>2.3radio 单选框</h3>
+    <p>如果两个radio的name 相同 那么只能选择一个 互斥</p>
+    <form action="loveme" method="get">
+        <span>喜欢的水果</span>
+        <label><input type="radio" name="loveme" value="yes">爱我</label>
+        <label><input type="radio" name="loveme" value="no">不爱</label>
+        <button>提交</button>
+    </form>
+    <h3>2.4 下拉选select</h3>
+    <p> disabled: 禁选<br>selected:选中项 <br> select的name属性就是传递的参数名 <br> 带selected的option的value是传递的值  </p>
+    <form action="group" method="get">
+        <span>分组</span>
+        <select name="group" id="group">
+            <option value="0">请选择</option>
+            <option value="1">第一组</option>
+            <option value="2" disabled>第二组</option>
+            <option value="3" selected>第三组</option>
+            <option value="4">第四组</option>
+        </select>
+        <button>提交</button>
+    </form>
+    <h3>2.5 textarea 文本框</h3>
+    <span>文本框-个人介绍</span>
+    <p>cols:多少行 <br> rows:多少列</p>
+    <form action="loveme" method="get">
+        <textarea name="introduce" id="introduce" cols="30" rows="10"></textarea>
+        <button>提交</button>
+    </form>
+
+    <hr>
+
+    <h2>3 table 表格</h2>
+    <p> thead:表头 tbody:表格内容 tfoot:表格尾</p>
+    <p>tr: table row 一行<br> td: table data 表格总一行的数据 <br> rowspan:合并行 <br> colspan: 合并列 <br> border-collaspe: collaspe 单层边框(默认双层边框)  </p>
+    <table border=1 style="border-collapse: collapse;text-align: center;">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>班级</th>
+                <th>分数</th>
+                <th>语文评价</th>
+                <th>数学评价</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>2班</td>
+                <td>95</td>
+                <td>A</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>3班</td>
+                <td rowspan="2">94</td>
+                <td colspan="2">B</td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>4班</td>
+                <td>B</td>
+                <td>A</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
