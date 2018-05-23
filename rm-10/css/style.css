@@ -1,0 +1,59 @@
+body{
+    background: black;
+    color:white;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color:inherit
+}
+
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both
+}
+
+.topNavBar{
+    padding: 20px 16px;
+}
+.topNavBar>.logo{
+    float: left;
+}
+.topNavBar>nav{
+    float: right;
+}
+.topNavBar>nav>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+.topNavBar>nav>ul>li{
+    float: left;
+    margin: 0 17px;
+}
+.topNavBar>nav>ul>li>a{
+    color: #ffffffb3;
+    font-weight: bold;
+    display: block;
+    padding: 5px 0;
+    font-size: 12px;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent
+}
+.topNavBar>nav>ul>li>a:hover{
+    border-bottom: 3px solid #e9666a
+}
+
+.topNavBar .logo{
+    font-size: 24px;
+    font-family: "Arial Black";
+}
+.topNavBar .rs{
+    margin-right: 4px;
+    color: #e9666a
+}
+.topNavBar .card{
+    color: #999da1
+}
+

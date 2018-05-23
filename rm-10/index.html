@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航条</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="topNavBar clearfix">
+        <a href="#" class="logo" alt="RSccard">
+            <span class="rs">RS</span><span class="card">card</span>
+        </a>
+        <nav>
+            <ul class="clearfix">
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">SKILLS</a></li>
+                <li><a href="#">PORFOLIO</a></li>
+                <li><a href="#">EXPERIENCE</a></li>
+                <li><a href="#">PROCING</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">CALENDAR</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">OTHER</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <hr>
+    <div class="tips">
+        <h2>1 css引入方式</h2>
+    <p>1.1 内联style属性 <br> 1.2 style标签 <br> 1.3 外部css文件 link rel="stylesheet" href="./a.css" <br>
+        1.3.1 rel:relationship 关系  stylesheet:样式 href:外部css文件路径(浏览器会发起一个get请求去请求外部css资源)
+        <br> 1.4 @import url('./b.css')</p>
+    <h2>2 如何并排显示</h2>
+    <p>2.1 所有需要并排显示的元素 float:left <br> 2.2 创建一个类 clearfix::after{content:'';display:block;
+    clear:both} <br> 2.3 在所有需要并排显示的元素的 爸爸上 加上这个类</p>
+    <h2>3 li如何包裹a</h2>
+    <p>将a的display 设为 block</p>
+    <h2>4 右侧导航 鼠标悬浮效果</h2>
+    <p>4.1伪类a:hover当鼠标悬停时</p>
+    <p>4.2先给a设定好border-top border-bottom ：3px solid transparent  注意这是透明的 <em style="color: red;">小技巧</em></p>
+    <p>4.3悬停时 border-bottom:3px solid red</p>
+    </div>
+</body>
+</html>
