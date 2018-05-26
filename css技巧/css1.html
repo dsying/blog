@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css技巧学习1</title>
+    <style>
+        .inner span{
+            border: 1px solid red;
+            font-size: 50px
+        }
+        .block div{
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h2>元素高度由什么决定？</h2>
+    <h3>1.1 div(块级元素)</h3>
+    <p>div高度由其内部的<strong>文档流</strong>元素的高度综合决定。</p>
+    <p>什么是文档流？文档内元素的流动方向</p>
+
+    <div class="inner">
+        <p><strong>内联元素的流动方向:</strong> <strong style="color: red">从左往右</strong>流动 如果遇到宽度不够 就另起一行</p>
+        <p>内联元素 设置宽和高无效 宽由内容决定 高度由文字的建议行高（line-height）决定</p>
+        <span>1234567890</span>
+        <span>1234567890</span>
+        <span>1234567890</span>
+        <span>1234567890</span>
+        <span>1234567890</span>
+        <span>1234567890</span>
+        <span>1234567890</span>
+    </div>
+    <div class="block">
+        <p><strong>块级元素的流动方向:</strong><strong style="color:red">从上往下流动</strong>每一个块都会占一行</p>
+        <div style="width: 200px;">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <hr>
+
+    <h2>脱离文档流</h2>
+    <div style="background-color: red">
+        position 默认
+    </div>
+    <p><strong>脱离方法1</strong> position:fixed 相对屏幕定位 通过 top bottom left right 确定在屏幕的哪个位置</p>
+
+    <div class="fixed" style="background-color: red;position: fixed;">
+        position:fixed 尝试着 上下滑动页面
+    </div>
+    <p style="margin-top: 55px"><strong>脱离方法2</strong> position: absolute 相对于祖先中第一个position为 relative的元素 定位</p>
+    <span style="background-color: #e8676b;color: white;padding: 5px 10px;position: relative;">hello 尝试着改变 内容的长度
+            <span style="border:1px solid red;width: 10px;height: 10px;position: absolute;top: 100%"></span>
+    </span>
+</body>
+</html>

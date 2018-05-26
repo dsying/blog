@@ -1,0 +1,34 @@
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.trick1 ul>li{
+    list-style: none;
+    border:1px solid red;
+    float: left;
+    margin: 0 17px;
+}
+.trick1 ul>li>a{
+    text-decoration: none;
+}
+
+.trick2 .span1{
+    background-color:#E6686A;
+    display: inline-block;
+    width:150px;
+    height: 30px;
+    line-height: 30px;
+}
+.trick2 .span2{
+    background-color:#E6686A;
+    padding: 7.5px 10px;
+}
+
+
+.trick3 .horizontal{
+    max-width: 940px;
+    border: 1px solid red;
+    margin-left: auto;
+    margin-right: auto;
+}

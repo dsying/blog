@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常见小套路整理(-)</title>
+    <link rel="stylesheet" href="./trick1.css">
+</head>
+<body>
+
+    <div class="trick1">
+        <h2>如何让一堆元素 排列在一行</h2>
+        <div class="clearfix">
+            <div style="float: left;text-align: center;line-height: 56px">
+                1 所有需要并排的元素 float浮动
+                2 在并排元素的爸爸元素 上 添加类 clearfix
+                3 .clearfix{content:'';display:block;clcear:both;}
+            </div>
+            <nav style="float: right;">
+                <ul class="clearfix">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <hr>
+        <div class="trick2">
+            <h2>如何让一个span中的内容 水平 垂直居中</h2>
+
+            <span class="span1">小白喜欢这么写</span>
+            <span class="span2">老司机喜欢这么写</span>
+            <strong>当span中的文字变长时 你就知道老司机的方法好在哪里了</strong>
+            <button id="bt1">点我试试</button>
+        </div>
+        <hr>
+
+        <div class="trick3" >
+            <h2>如何让一个div 水平居中</h2>
+            <div class="horizontal" style="text-align: center;line-height: 100px;background-color: #E6686A">
+                放上来试试
+            </div>
+        </div>
+        <hr>
+
+    </div>
+
+    <script type="text/javascript">
+        document.querySelector(".span1").onmouseover=function(){
+            alert(`
+                display: inline-block;
+                width:150px;
+                height: 30px;
+                line-height: 30px;
+                `);
+        }
+        document.querySelector(".span2").onmouseover=function(){
+            alert(`
+                padding: 7.5px 10px;
+                `);
+        }
+        document.querySelector("#bt1").onclick=function(){
+            document.querySelector(".span1").innerHTML="当span中的文字变长时 你就知道老司机的方法好在哪里了";
+            document.querySelector(".span2").innerHTML="当span中的文字变长时 你就知道老司机的方法好在哪里了";
+        }
+
+        document.querySelector(".horizontal").onmouseover=function(){
+            this.innerHTML= `
+            margin-left: auto;
+            margin-right: auto;`;
+        }
+        document.querySelector(".horizontal").onmouseout=function(){
+            this.innerHTML = "放上来试试"
+        }
+    </script>
+</body>
+</html>
