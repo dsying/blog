@@ -140,7 +140,11 @@ a{
     margin: 20px 0;
 }
 
-.text dl dt,dd{
+.text dl dt{
+    float: left;
+    padding: 5px 0;
+}
+.text dl dd{
     float: left;
     padding: 5px 0;
 }
