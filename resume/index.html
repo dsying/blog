@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>入门8html</title>
+    <title>个人简历</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="//at.alicdn.com/t/font_683031_wqhmiapc1nka9k9.js"></script>
     <style type="text/css">
@@ -53,10 +53,10 @@
                                 <span class='square'></span>
                         </span>
                     <h1>丁胜</h1>
-                    <h3>这是我的简历</h3>
+                    <span>这是我的简历</span>
                     <hr>
                     <dl>
-                    
+                        
                         <dt>年龄</dt>
                         <dd>26</dd>
                         <dt>地址</dt>
@@ -95,39 +95,119 @@
             </footer>
         </div>
 
-        <a href="#" class="button">下载 PDF 简历</a>
-        <p>
-            丁胜 前端小白 现在在苏宁上班 <br>
-            技能: 前端开发 java开发
-        </p>
+        <div class="download">
+            <p>
+                <a href="./resume.pdf" class="btn" download>下载 PDF 简历</a>
+            </p>
+            
+            <p>Hello! I’m Robert Smith. Senior Web Developer specializing in front end development. 
+                    Experienced with all stages of the development cycle for dynamic web projects. 
+                    Well-versed in numerous programming languages including JavaScript, SQL, 
+                    and C. Stng background in project management and customer relations.
+                </p>
+        </div>
+        
+
     </main>
 
-    <section>
-        <h2>技能</h2>
-        <ol>
-            <li>HTML &amp; CSS</li>
-            <li>JavaScript</li>
-            <li>jQuery</li>
-            <li>Vue</li>
-            <li>React</li>
+    <section class="skills">
+        <h2>专业技能</h2>
+        <ol class="clearflix">
+            <li>
+                <span>HTML &amp; CSS</span>
+                <div class="processBar">
+                    <div class="process">
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>JavaScript</span>
+                <div class="processBar">
+                    <div class="process">
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>jQuery</span>
+                <div class="processBar">
+                    <div class="process">
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>Vue</span>
+                <div class="processBar">
+                    <div class="process">
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>React</span>
+                <div class="processBar">
+                    <div class="process">
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>Angular</span>
+                <div class="processBar">
+                    <div class="process">
+
+                    </div>
+                </div>
+            </li>
         </ol>
     </section>
 
-    <section>
+    <section class="protfolio">
         <h2>作品集</h2>
         <nav>
-            <ol>
-                <li>所有</li>
-                <li>框架</li>
-                <li>原生JavaScript</li>
+            <ol class="clearflix">
+                <li id="protfolio1">所有</li>
+                <li id="protfolio2">原生JavaScript</li>
+                <li id="protfolio3">框架</li>
             </ol>
+            <div class="processBar">
+                <div class="process state-1" id="processInner"></div>
+            </div>
         </nav>
 
-        <div class="jobs">
-            <div class="big"></div>
-            <div class="small"></div>
-            <div class="small"></div>
+        <div class="works">
+            <div class="big" id="big">
+                <img src="./img/protfolio1.jpg" alt="作品1">
+            </div>
+            <div class="small1" id="small1">
+                <img src="./img/protfolio2.jpg" alt="作品2">
+            </div>
+            <div class="small2" id="small2">
+                <img src="./img/protfolio3.jpg" alt="作品3">
+            </div>
         </div>
     </section>
+
+    <script>
+        protfolio1.onclick = function(){
+            processInner.className = "process state-1";
+            big.className = "big";
+            small1.className = "small1"
+            small2.className = "small2"
+        }
+        protfolio2.onclick = function(){
+            processInner.className = "process state-2";
+            big.className = "big";
+            small1.className = "small1"
+            small2.className = "small2 poisition2"
+        }
+        protfolio3.onclick = function(){
+            processInner.className = "process state-3";
+            big.className = "big";
+
+        }
+    </script>
 </body>
 </html>

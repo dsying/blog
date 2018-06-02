@@ -18,6 +18,10 @@ a{
     text-decoration: none;
     color:inherit
 }
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+
 .clearflix::after{
     content: '';
     display: block;
@@ -90,12 +94,13 @@ a{
     /* 如何让一个div水平居中 */
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,.5);
 }
 .userCard .welcome{
     background-color: #e8676b;
     color: white;
     /* 如何给一个span中的文字 水平 垂直居中*/
-    /* 新手做法 
+    /* 新手做法
     display: inline-block;
     width: 70px;
     height: 29px;
@@ -179,3 +184,173 @@ a{
     fill: white;
     vertical-align: top;
 }
+
+main{
+    margin-top: -300px;
+}
+
+.download{
+    color: black;
+    /* border: 1px solid red; */
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.download a.btn{
+    border: 1px solid #cbcdcf;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 20px 55px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* 一秒钟过渡 */
+    transition: box-shadow 0.2s;
+}
+.download a.btn:hover{
+    opacity: 0.95;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+.download p{
+    text-align: center;
+    font-family: "Open Sans";
+}
+
+
+
+/*技能 and 作品集*/
+.skills,.protfolio{
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: black;
+    margin-top: 50px;
+}
+.skills h2,.protfolio h2{
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.skills ol{
+    text-align: left;
+    background-color: #FFFFFF;
+    padding:40px 50px 0px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,.5);
+}
+.skills ol li{
+    list-style: none;
+    float: right;
+    width:47%;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    font-size:14px;
+    /*border:1px solid red;*/
+}
+.skills ol li:nth-child(odd){
+    /*background-color: red;*/
+    float: left;
+}
+.skills ol li .processBar{
+    height: 5px;
+    background-color: #F7E2E2;
+    border-radius:5px;
+}
+.skills ol li .processBar .process{
+    height: inherit;
+    background-color: #D96E6E;
+    width: 65%;
+    border-radius:5px;
+
+}
+
+
+.protfolio nav{
+    /*border: 1px solid red;*/
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 30px;
+}
+.protfolio nav  ol{
+    /*border: 1px solid green;*/
+    display: inline-block;
+    vertical-align: top;
+}
+.protfolio nav ol li{
+    float: left;
+    list-style: none;
+    cursor: pointer;;
+}
+.protfolio nav ol li:nth-child(even){
+    margin: 0 50px;
+}
+
+.protfolio nav .processBar{
+    margin-top: 5px;;
+    height:5px;
+    line-height: 55px;
+    border-radius:5px;
+    background-color: #FFFFFF;
+}
+.protfolio nav .processBar .process{
+    height:5px;
+    line-height: 5px;
+    border-radius:5px;
+    background-color: #D96E6E;
+    transition: all .5s;
+}
+
+.state-1{
+    margin-left: 0px;
+    width: 12%;
+}
+.state-2{
+    margin-left: 75px;
+    width: 45%;
+}
+.state-3{
+    margin-left: 242px;
+    width: 11%;
+}
+
+.protfolio .works{
+    position: relative;
+    /*border: 1px solid red;*/
+    height:570px;
+}
+.protfolio .works .big{
+    position: absolute;
+    top: 0;
+    left:0;
+}
+.protfolio .works .small1{
+    position: absolute;
+    top: 0;
+    left: 645px;
+}
+.protfolio .works .small2{
+    position: absolute;
+    top: 298px;
+    left: 645px;
+}
+
+
+.poisition2{
+    display: none;
+}
+
+.position31{
+    display: none;
+}
+.position32{
+    top: 0;
+    left: 290px;
+}
+.position33{
+    top: 0;
+    left: 320px;
+}
+
+
+
+
