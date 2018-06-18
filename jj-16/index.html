@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>进阶-16</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="wrapper">
+
+        </div>
+    </main>
+    <footer></footer>
+</body>
+<script>
+
+    // 1. 初始化数据
+    let initHash = init();
+    let keys = initHash.keys;
+    let hash = initHash.hash;
+
+    // 2. 生成键盘
+    generateKeyboard(keys,hash)
+
+    // 3. 键盘监听
+    document.onkeypress = function(arg){
+        let key = arg['key'];
+        let website = hash[key];
+//        alert(website);
+        //alert(website);
+        //location.href = 'http://' + website;
+        window.open('http://' + website,'_blank');
+    }
+
+
+    // 工具方法
+    function init(){
+        let keys = {
+            '0':{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+            '1':{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+            '2':{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+            length:3
+        };
+        let hash = {
+            'q':'qq.com',
+            'w':'weibo.com',
+            'e':'ele.me',
+            'b':'baidu.com',
+            't':'tianya.cn'
+        };
+        let localHash = JSON.parse(localStorage.getItem('hash') || 'null');
+        if(localHash){
+            hash = localHash;
+        }
+        return {
+            'keys': keys,
+            'hash': hash
+        }
+    }
+
+    function generateKeyboard(keys,hash){
+        for(let index = 0;index < keys['length']; index++){
+            let x = tag('div');
+            for(let i = 0;i < keys[index]['length'];i++){
+                /*            let z = document.createElement('kbd');
+                 z.textContent = keys[index][i];*/
+                let z = tag('kbd',{textContent:keys[index][i],className:'keyboard'});
+
+                let editAttr = {};
+                editAttr.textContent = '编辑';
+                editAttr.id = keys[index][i];
+                editAttr.onclick = function (node) {
+                    //alert(this.id);
+                    let url = prompt('给我一个网址');
+                    hash[this.id] = url;
+                    if(url){
+                        localStorage.setItem('hash',JSON.stringify(hash));
+                    }
+                    let img = node.target.previousSibling;
+                    img.src = 'http://' + url + '/favicon.ico';
+                    img.onerror = function(){
+                        img.src = './wall2-min.jpg';
+                    }
+                }
+                let edit = tag('button',editAttr);
+
+                let imgAttr = {}
+                if(hash[keys[index][i]]){
+                    imgAttr.src = 'http://' + hash[keys[index][i]] + '/favicon.ico';
+                }else{
+                    imgAttr.src = './wall2-min.jpg';
+                }
+                let img = tag('img',imgAttr);
+                img.onerror = function(){
+                    img.src = './wall2-min.jpg';
+                }
+
+                z.appendChild(img);
+                z.appendChild(edit);
+                x.appendChild(z);
+            }
+            wrapper.appendChild(x);
+        }
+    }
+
+    function tag(tagName,attrs){
+        let element = document.createElement(tagName);
+        for(let key in attrs){
+            element[key] = attrs[key]
+        }
+        return element
+    }
+
+</script>
+</html>

@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding:0;
+}
+body{
+    background: gray url("./wall2-min.jpg") no-repeat center center;
+    background-size:cover;
+}
+main{
+    /*border: 1px solid purple;*/
+    /*padding: 0 auto;*/
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#wrapper{
+    /*border:1px solid green;*/
+    display: inline-block;
+    /*margin: 0 auto;*/
+    background: rgba(255,255,255,0.2);
+    padding: 20px 20px 0 20px;
+    border-radius: 10px;
+}
+#wrapper>div{
+    margin-bottom: 20px;
+}
+kbd{
+    display:inline-block;
+    width:5em;
+    height:5em;
+    border:1px solid red;
+    text-align: center;
+    line-height: 5em;
+    text-transform: uppercase;
+    position: relative;
+    margin: 0 10px;
+}
+.keyboard{
+    width: 60px;
+    height: 48px;
+    background: linear-gradient(to bottom, #292929 0%,#111111 100%);;
+    color: #c5c5c5;
+    border:1px solid #373737;
+    border-radius: 8px;
+    box-shadow:0 0 0 1px #1A1B1C,0 0 0 2PX #1f2020,0 3px 0 2px #080808;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: Helvetica;
+}
+main div kbd:hover > button{
+    display:inline-block;
+}
+main div kbd button{
+    position: absolute;
+    right:0;
+    bottom:0;
+    display: none;
+}
+main div kbd img{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+}
+#wrapper div:nth-child(2){
+    margin-left: -1.2em;
+}
+#wrapper div:nth-child(3){
+    margin-left: -5em;
+}
