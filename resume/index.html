@@ -12,10 +12,55 @@
            fill: currentColor;
            overflow: hidden;
         }
+        @keyframes s {
+            0%{
+                width:0px;height:0px;opacity: 1;
+            }
+            100%{
+                width:100px;height:100px;opacity: 0;
+            }
+        }
+        .site-welcome{
+            display: none;
+        }
+        .site-welcome.active{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: lightgray;
+            z-index: 1;
+        }
+        .loading{
+            width:100px;
+            height:100px;
+            position: relative;
+        }
+        .loading::before,.loading::after{
+            content:'';
+            position: absolute;
+            top:0;right:0;bottom:0;left:0;
+            background: #000;
+            border-radius:50%;
+            margin:auto;
+            animation: s 1.5s infinite linear;
+        }
+        .loading::after{
+            animation-delay:0.75s;
+        }
+
     </style>
 </head>
 <body>
-    <div class="tabNavBar ">
+    <div class="site-welcome active" id="siteWelcome">
+        <div class="loading"></div>
+    </div>
+
+    <div id="tabNavBar" class="tabNavBar ">
         <div class="topNavBar-inner clearflix">
             <a href="#" class="logo" style="float: left;">
                     <span class="rs">RS</span><span class="card">card</span>
@@ -191,6 +236,13 @@
     </section>
 
     <script>
+        setTimeout(function () {
+            siteWelcome.classList.remove('active')
+        },3000);
+
+        window.onscroll = function (x){
+            window.scrollY > 0?tabNavBar.classList.add('sticky'):tabNavBar.classList.remove('sticky')
+        }
         protfolio1.onclick = function(){
             processInner.className = "process state-1";
             big.className = "big";
