@@ -67,12 +67,26 @@
             </a>
             <nav style="float: right;">
                 <ul class="clearflix">
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">SKILLS</a></li>
-                    <li><a href="#">PORFOLIO</a></li>
+                    <li><a href="#siteAbout">ABOUT</a></li>
+                    <li><a href="#siteSkills">SKILLS</a></li>
+                    <li>
+                        <a href="#siteWorks">PORFOLIO</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品1</li>
+                            <li>作品1</li>
+                        </ul>
+                    </li>
                     <li><a href="#">EXPERIENCE</a></li>
                     <li><a href="#">PROCING</a></li>
-                    <li><a href="#">BLOG</a></li>
+                    <li>
+                        <a href="#">BLOG</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品1</li>
+                            <li>作品1</li>
+                        </ul>
+                    </li>
                     <li><a href="#">CALENDAR</a></li>
                     <li><a href="#">CONTACT</a></li>
                     <li><a href="#">OTHER</a></li>
@@ -87,7 +101,7 @@
     </div>
 
     <main>
-        <div class="userCard">
+        <div id="siteAbout" class="userCard">
             <div class=" textAndPicture clearflix">
                 <div class="picture" style="float: left;">
                     <img src="./img/resume-man1.jpg" style="width: 299px;height: 347px" alt="picture">
@@ -155,7 +169,7 @@
 
     </main>
 
-    <section class="skills">
+    <section id="siteSkills" class="skills">
         <h2>专业技能</h2>
         <ol class="clearflix">
             <li>
@@ -209,7 +223,7 @@
         </ol>
     </section>
 
-    <section class="protfolio">
+    <section id="siteWorks" class="protfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearflix">
@@ -243,6 +257,35 @@
         window.onscroll = function (x){
             window.scrollY > 0?tabNavBar.classList.add('sticky'):tabNavBar.classList.remove('sticky')
         }
+
+        let liTags = document.querySelectorAll('nav>ul>li')
+        for(let i = 0,len = liTags.length; i < len; i++){
+            let liTag = liTags[i];
+            liTag.onmouseenter = function(x){
+                x.currentTarget.classList.add('active');
+            }
+            liTag.onmouseleave = function(x){
+                x.currentTarget.classList.remove('active');
+            }
+        }
+
+        let aTags = document.querySelectorAll('nav>ul>li>a')
+        // 导航栏a标签点击时对应html 在距离页面顶部指定位置处显示(注意不是浏览器顶部)
+        aTags.forEach(function(e,){
+           e.onclick = function (x) {
+               x.preventDefault();
+               let a = x.currentTarget;
+               let id = a.getAttribute('href');
+               let ele = document.querySelector(id);
+               let top = ele.offsetTop;
+               window.scrollTo(0, top - 80);
+           }
+        })
+
+
+
+
+
         protfolio1.onclick = function(){
             processInner.className = "process state-1";
             big.className = "big";
