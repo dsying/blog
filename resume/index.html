@@ -249,6 +249,7 @@
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script>
         setTimeout(function () {
             siteWelcome.classList.remove('active')
@@ -277,8 +278,45 @@
                let a = x.currentTarget;
                let id = a.getAttribute('href');
                let ele = document.querySelector(id);
+
+               let times = 25;            //执行25次
+               let duration = 500 / times;//周期
                let top = ele.offsetTop;
-               window.scrollTo(0, top - 80);
+               console.log('offsetTop:' + top)
+               let currentTop = window.scrollY;
+               console.log('scrollY:' + currentTop)
+
+               let targetTop = top - 80;
+               console.log('targetTop:' + targetTop)
+               //自己写的方法
+/*               let distance = (targetTop - currentTop)/times; //没次移动多少
+               console.log('distance' + distance)
+               let n = 0;
+               let interval = setInterval(() => {
+                   if(n >= 25){
+                       window.clearInterval(interval);
+                       return
+                   }
+                    n += 1;
+                    window.scrollTo(0,currentTop + distance*n)
+               },duration)*/
+
+               //使用tween.js
+               function animate(time) {
+                   requestAnimationFrame(animate);
+                   TWEEN.update(time);
+               }
+               requestAnimationFrame(animate);
+
+               var coords = { y: currentTop };
+               var tween = new TWEEN.Tween(coords) // 初始位置
+                       .to({y: targetTop }, 1000) // 目标位置 以及用时
+                       .easing(TWEEN.Easing.Quadratic.InOut) // 使用一个(淡入淡出)缓动函数让动画变得平滑
+                       .onUpdate(function() { // 回调函数
+                           window.scrollTo(0,coords.y)
+                       })
+                       .start(); //立刻开始缓动
+
            }
         })
 
