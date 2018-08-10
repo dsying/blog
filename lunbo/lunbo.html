@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <style>
+        .window{
+            border:1px solid green;
+            width: 525px;
+            overflow: hidden;
+        }
+        .images{
+            border:1px solid red;
+            display: flex;
+            transition: transform .5s;
+        }
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="window">
+    <div class="images" id="images">
+        <img id="d1" src="./dog4.jpeg" alt="狗狗1">
+        <img id="d2" src="./dog2.jpeg" alt="狗狗2">
+        <img id="d3" src="./dog3.jpeg" alt="狗狗3">
+    </div>
+</div>
+<div id="buttons">
+    <button id="b1">第1张</button>
+    <button id="b2">第2张</button>
+    <button id="b3">第3张</button>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/2.1.1-beta1/jquery.min.js"></script>
+<script>
+
+    let n = 0;
+    let buttons = $('#buttons>button');
+
+    function switchBtn(index){
+        buttons.eq(index).trigger('click')
+    }
+
+    function activeBtn(btn){
+        $(btn).addClass('red').siblings('.red').removeClass('red');
+    }
+
+
+
+
+    for(let i = 0,len = buttons.length; i < len; i++){
+        $(buttons[i]).on('click',(e) => {
+            let index = $(e.currentTarget).index();
+            let px = index * (-525);
+            $(images).css('transform','translatex(' + px + 'px)')
+
+            n = i;
+            activeBtn($(buttons[i]))
+        })
+    }
+
+    let setTimer = () => {
+        return setInterval(()=>{
+            n += 1;
+            switchBtn(n%3);
+            activeBtn(buttons.eq(n%3));
+
+        },2000);
+    }
+
+    let timer1 = setTimer();
+
+    $('.window').on('mouseenter',()=>{
+        window.clearInterval(timer1)
+    })
+    $('.window').on('mouseleave',()=>{
+        timer1 = setTimer()
+    })
+</script>
+</body>
+</html>
