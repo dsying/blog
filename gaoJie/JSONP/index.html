@@ -7,42 +7,45 @@
         h5{color: red;}
         fieldset{width: 400px;}
         .wrapper{display: flex}
+        .wrapper .left{display: flex;flex-wrap: wrap}
     </style>
 </head>
 <body>
+    <h1>JSONP的进化史</h1>
+    <h5>您的账户余额是:&nbsp<span id="amount">&&&amount&&&</span></h5>
     <div class="wrapper">
+
         <div class="left">
-            <h5>您的账户余额是:&nbsp<span id="amount">&&&amount&&&</span></h5>
+
             <fieldset>
-                <legend>form表单发送请求</legend>
+                <legend>1 form表单发送请求</legend>
                 <form action="/formPay" method="POST">
                     <input type="text" name="number" value="1">
                     <input type="submit" value="form提交">
-                    <p>form表单提交一定会刷新页面</p>
+                    <p>form表单提交一定会刷新页面,有什么办法能够不刷新页面</p>
                 </form>
             </fieldset>
 
             <fieldset>
-                <legend>表单发送请求+iframe展示返回信息</legend>
+                <legend>2 form表单发送请求+iframe展示返回信息</legend>
                 <form action="/formPaywithFrame" method="POST" target="return">
                     <input type="text" name="number" value="1">
                     <input type="submit" value="form提交">
-                    <iframe name="return" frameborder="0"></iframe>
+                    <iframe name="return" frameborder="0" style="border:1px solid red"></iframe>
                 </form>
                 <p>这种方法虽然不刷新当前页面，但是需要加一个iframe</p>
             </fieldset>
 
-            <p>注意：--除了form能发送请求之外，html还能怎么发送请求？</p>
-            <p>link,a,img,script这四个标签都会发送请求，因为这四个标签的作用都是访问外部资源</p>
-
             <fieldset>
-                <legend>通过img发送请求</legend>
+                <p style="color: red">注意：--除了form能发送请求之外，html还能怎么发送请求？</p>
+                <p style="color: red">link,a,img,script这四个标签都会发送请求，因为这四个标签的作用都是访问外部资源</p>
+                <legend>3 通过img发送请求</legend>
                 <button id="imgBtn">img请求</button>
                 <p>img只能发起GET请求，且如果要返回成功必须要真的返回一张图片</p>
             </fieldset>
 
             <fieldset>
-                <legend>通过script发送请求</legend>
+                <legend>4 通过script发送请求</legend>
                 <button id="scriptBtn">script请求</button>
                 <p>1 script是必须要放到body中，才能发起请求</p>
                 <p>2 script请求的返回结果会被立即执行</p>
@@ -50,38 +53,73 @@
             </fieldset>
 
             <fieldset>
-                <legend>script 不受同源控制</legend>
+                <legend>5 script 不受同源控制</legend>
                 <button id="scrossBtn">script发送跨域请求</button>
                 <p>1 后台起了两个服务: 1)dsying：8001 2)dingduoduo:8002</p>
                 <p>2 模拟跨域请求</p>
             </fieldset>
 
             <fieldset>
-                <legend>JSONP</legend>
+                <legend>6 JSONP跨域请求</legend>
                 <button id="jsonpBtn">jsonp跨域请求</button>
-                <p>1 后台起了两个服务: 1)dsying：8001 2)dingduoduo:8002</p>
-                <p>2 模拟跨域请求</p>
+                <pre>
+                    <p>前台代码：</p>
+                        let functionName = 'dsying' + parseInt(Math.random()*10000, 10);
+                        window[functionName] = function(param){
+                            alert(param)
+                            amount.innerHTML = amount.innerHTML - 1
+                        }
+                        jsonpBtn.addEventListener('click',(e)=>{
+                            var script = document.createElement('script')
+                            script.src = 'http://dingduoduo:8002/jsonpPay?<span style="color: red">callback=' + functionName</span>
+                            document.body.append(script)
+
+                            script.onload = function (event) {
+                                event.currentTarget.remove()
+                                delete window[functionName]
+                            }
+                            script.onerror = function (event) {
+                                //script 请求失败
+                                alert('script 请求失败了')
+                                event.currentTarget.remove()
+                                delete window[functionName]
+                            }
+                        })
+                </pre>
+                <pre>
+                    <p>后台代码：</p>
+                         response.write(`
+                            ${query.callback}.call(undefined,'success 前台通过url传递一个name为callback的参数，告诉我要执行哪个function')
+                          `)
+                </pre>
             </fieldset>
         </div>
 
         <div class="right">
-            JSONP
-            请求方：frank.com 的前端程序员（浏览器）
-            响应方：jack.com 的后端程序员 （服务器）
 
-            1 请求方创建script,src 指向响应方 ，同时传递一个查询参数 ？callbackName=yyy
-            2 响应方根据查询参数callbackName,构造刑如
-                1 yyy.call(undefined,'你要的数据')
-                2 yyy('你要的数据')
-                这样的响应
-            3 浏览器接收到响应，就会执行 yyy.call(undefinde,'你要的数据')
-            4 那么请求方就知道了他要的数据
+            <fieldset>
+                <legend>什么是JSONP</legend>
+                <p>
+                <p>JSONP</p>
+                    <p>请求方：frank.com 的前端程序员（浏览器）</p>
+                    <p>响应方：jack.com 的后端程序员 （服务器）</p>
 
-            这就是JSONP
+                    <p>1 请求方创建script,src 指向响应方 ，同时传递一个查询参数 ？callbackName=yyy</p>
+                    <p>2 响应方根据查询参数callbackName,构造刑如</p>
+                        <p>1 yyy.call(undefined,'你要的数据')</p>
+                        <p>2 yyy('你要的数据')</p>
+                        <p>这样的响应</p>
+                    <p>3 浏览器接收到响应，就会执行 yyy.call(undefinde,'你要的数据')</p>
+                    <p>4 那么请求方就知道了他要的数据</p>
 
-            约定
-            1 callbackName -> 行业内统一叫做 callback
-            2 yyy -> 使用函数名+随机数   避免污染全局变量
+                    <p>这就是JSONP</p>
+
+                    <p>约定</p>
+                    <p>1 callbackName -> 行业内统一叫做 callback</p>
+                    <p>2 yyy -> 使用函数名+随机数   避免污染全局变量</p>
+                </p>
+            </fieldset>
+
             <fieldset>
                 <legend>请问JSONP为什么不支持POST请求</legend>
                 <p>1 因为JSONP是通过动态创建script实现的</p>
