@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h5{color: red;}
+        fieldset{width: 400px;}
+        fieldset{width:auto;}
+        .wrapper{display: flex;flex-direction: column}
+        .wrapper .top{display: flex;flex-direction: row}
+        .wrapper .left{display: flex;flex-wrap: wrap;}
+        .wrapper .right{display: flex;flex-direction: column}
+        strong{color: red}
+    </style>
+</head>
+<body>
+    <h1>AJAX</h1>
+    <div class="wrapper">
+        <div class="top">
+            <div class="left">
+                <fieldset>
+                    <legend> form表单发送请求</legend>
+                    <button id="btn">ajax请求</button>
+                    <pre>
+                        btn.addEventListener('click', (e)=>{
+                          let request = new XMLHttpRequest()
+                          request.open('get', '/ajax') // 配置request
+                          request.send()
+                          request.<strong>onreadystatechange</strong> = ()=>{
+                            if(<strong>request.readyState === 4</strong>){
+                              console.log('请求响应都完毕了')
+                              console.log(request.status)
+                              if(<strong>request.status >= 200</strong> && request.status < 300){
+                                console.log('说明请求成功')
+                                console.log(typeof request.responseText)
+                                console.log(request.<strong>responseText</strong>)
+                                let string = request.responseText
+                                // 把符合 JSON 语法的字符串
+                                // 转换成 JS 对应的值
+                                let object = window.<strong>JSON.parse</strong>(string)
+                                // JSON.parse 是浏览器提供的
+                                console.log(typeof object)
+                                console.log(object)
+                                console.log('object.note')
+                                console.log(object.note)
+
+                              }else if(request.status >= 400){
+                                console.log('说明请求失败')
+                              }
+
+                            }
+                          }
+                        })
+                    </pre>
+                </fieldset>
+            </div>
+
+            <div class="right">
+
+                <fieldset>
+                    <legend>如何发请求？</legend>
+                        <pre>
+                            用 form 可以发请求，但是会刷新页面或新开页面
+                            用 a 可以发 get 请求，但是也会刷新页面或新开页面
+                            用 img 可以发 get 请求，但是只能以图片的形式展示
+                            用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示
+                            用 script 可以发 get 请求，但是只能以脚本的形式运行
+
+                            有没有什么方式可以实现
+
+                            get、post、put、delete 请求都行
+                            想以什么形式展示就以什么形式展示
+                        </pre>
+                </fieldset>
+                <fieldset>
+                    <legend>什么是AJAX?</legend>
+                        <pre>
+                            <h4>AJAX是异步的JavaScript和XML（Asynchronous JavaScript And XML）。简单点说，就是使用 XMLHttpRequest 对象与服务器通信。 <br>它可以使用JSON，XML，HTML和文本等多种格式发送和接收。AJAX最吸引人的就是它的“异步”特性，也就是说他可以在不重新刷新页面的情况下与服务器通信，交换数据，更新页面</h4>
+                        </pre>
+                </fieldset>
+
+                 <fieldset>
+                    <legend>readyState</legend>
+                        <div id="show">
+                        <p>readyState:0 状态:UNSENT 描述：代理被创建，但尚未调用 open() 方法</p>
+                        <p>readyState:1 状态:OPENED 描述：open() 方法已经被调用</p>
+                    </div>
+                </fieldset>
+
+            </div>
+        </div>
+        <div class="bottom">
+
+        </div>
+    </div>
+
+<script src="./main.js"></script>
+
+</body>
+</html>
