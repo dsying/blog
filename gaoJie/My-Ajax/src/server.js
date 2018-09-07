@@ -45,6 +45,12 @@ var server = http.createServer(function(request, response){
     response.setHeader('contentType', 'text/html;charset=utf-8')
     response.write(string)
     response.end()
+  }else if(path === '/ajax3.js'){
+    var string = fs.readFileSync('ajax3.js','utf8')
+    response.statusCode = 200
+    response.setHeader('contentType', 'text/html;charset=utf-8')
+    response.write(string)
+    response.end()
   }else if(path === '/ajax'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/json;charset=utf-8')
