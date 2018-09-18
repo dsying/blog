@@ -54,7 +54,7 @@ var server = http.createServer(function(request, response){
   }else if(path === '/ajax'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/json;charset=utf-8')
-    response.setHeader('Access-Control-Allow-Origin', 'http://dingduoduo:8002')
+    response.setHeader('Access-Control-Allow-Origin', 'http://es6.ruanyifeng.com')
     response.write(`
     {
       "note":{

@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6{
     z-index: 1;
 }
 .topNavBar-inner{
-    padding: 0 16px;    
+    padding: 0 16px;
 }
 .tabNavBar  nav > ul{
     list-style: none;
@@ -67,7 +67,7 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;
-    display: block 
+    display: block
 }
 
 .tabNavBar .submenu{
@@ -181,7 +181,7 @@ h1,h2,h3,h4,h5,h6{
 
 .textAndPicture{
     padding: 57px 50px 15px 50px;
-    
+
 }
 .picture{
     float: left;
@@ -329,93 +329,6 @@ main{
 
 }
 
-
-.protfolio nav{
-    /*border: 1px solid red;*/
-    display: inline-block;
-    vertical-align: top;
-    margin-bottom: 30px;
-}
-.protfolio nav  ol{
-    /*border: 1px solid green;*/
-    display: inline-block;
-    vertical-align: top;
-}
-.protfolio nav ol li{
-    float: left;
-    list-style: none;
-    cursor: pointer;;
-}
-.protfolio nav ol li:nth-child(even){
-    margin: 0 50px;
-}
-
-.protfolio nav .processBar{
-    margin-top: 5px;;
-    height:5px;
-    line-height: 55px;
-    border-radius:5px;
-    background-color: #FFFFFF;
-}
-.protfolio nav .processBar .process{
-    height:5px;
-    line-height: 5px;
-    border-radius:5px;
-    background-color: #D96E6E;
-    transition: all .5s;
-}
-
-.state-1{
-    margin-left: 0px;
-    width: 12%;
-}
-.state-2{
-    margin-left: 75px;
-    width: 45%;
-}
-.state-3{
-    margin-left: 242px;
-    width: 11%;
-}
-
-.protfolio .works{
-    position: relative;
-    /*border: 1px solid red;*/
-    height:570px;
-}
-.protfolio .works .big{
-    position: absolute;
-    top: 0;
-    left:0;
-}
-.protfolio .works .small1{
-    position: absolute;
-    top: 0;
-    left: 645px;
-}
-.protfolio .works .small2{
-    position: absolute;
-    top: 298px;
-    left: 645px;
-}
-
-
-.poisition2{
-    display: none;
-}
-
-.position31{
-    display: none;
-}
-.position32{
-    top: 0;
-    left: 290px;
-}
-.position33{
-    top: 0;
-    left: 320px;
-}
-
 [data-x].offset{
     transform: translateY(100px);
 }
@@ -423,6 +336,66 @@ main{
     transform: translateY(0);
     transition: all .5s;
 }
+
+
+section.protfolio  .swiper-button-prev,section.protfolio .swiper-button-next{
+    background-color: white;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+@keyframes s {
+    0%{
+        width:0px;height:0px;opacity: 1;
+    }
+    100%{
+        width:100px;height:100px;opacity: 0;
+    }
+}
+.site-welcome{
+    display: none;
+}
+.site-welcome.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: lightgray;
+    z-index: 1;
+}
+.loading{
+    width:100px;
+    height:100px;
+    position: relative;
+}
+.loading::before,.loading::after{
+    content:'';
+    position: absolute;
+    top:0;right:0;bottom:0;left:0;
+    background: #000;
+    border-radius:50%;
+    margin:auto;
+    animation: s 1.5s infinite linear;
+}
+.loading::after{
+    animation-delay:0.75s;
+}
+.swiper-container {
+    width: 600px;
+    height: 300px;
+}
+
 
 
 
